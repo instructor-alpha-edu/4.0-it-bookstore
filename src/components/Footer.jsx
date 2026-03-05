@@ -1,9 +1,12 @@
 import { FaInstagram, FaTelegram, FaYoutube } from "react-icons/fa6";
+import { useTheme } from "../providers/ThemeProvider";
 import logo from "../assets/img/logo.png";
 
 export default function Footer() {
+  const { isDark } = useTheme();
+
   return (
-    <footer className="footer">
+    <footer className={`footer ${isDark && "dark"}`}>
       <div className="footer-container">
         <div className="footer-part">
           <img src={logo} alt="Logo" height="48" />

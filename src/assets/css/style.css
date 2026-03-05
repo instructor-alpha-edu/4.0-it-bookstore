@@ -413,6 +413,7 @@ textarea.support-form__input {
 }
 
 .support-form__submit {
+  margin-top: 24px;
   display: inline-block;
   padding: 10px 18px;
   border-radius: 12px;
@@ -427,28 +428,6 @@ textarea.support-form__input {
 .support-form__submit:hover {
   cursor: pointer;
   background: var(--blue-hover);
-}
-
-.support-form__submit:disabled {
-  opacity: 0.65;
-  cursor: not-allowed;
-}
-
-.submit-btn__container {
-  margin-top: 24px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-}
-
-.submit-btn__message {
-  padding: 8px 12px;
-  background: var(--white);
-  border-radius: 8px;
-  color: var(--blue);
-  font-weight: 700;
-  font-size: 18px;
 }
 
 /* Footer */
@@ -573,4 +552,15 @@ textarea.support-form__input {
   justify-content: flex-start;
   align-items: center;
   gap: 16px;
+}
+
+.sm-loader {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--blue);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }

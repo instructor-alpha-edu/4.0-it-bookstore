@@ -3,15 +3,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 export default function SingleBookPage() {
-  const { isbn13 } = useParams();
+  const { id } = useParams();
   const [bookDetails, setBookDetails] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    async function fetchBookByISBN13(id) {
+    async function fetchBookById(paramId) {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(`https://api.itbook.store/1.0/books/${id}`);
+        const { data } = await axios.get(
+          `https://www.dbooks.org/api/book/${paramId.toLowerCase()}`
+        );
         setBookDetails(data);
       } catch (error) {
         console.log(error);
@@ -20,8 +22,8 @@ export default function SingleBookPage() {
       }
     }
 
-    fetchBookByISBN13(isbn13);
-  }, [isbn13]);
+    fetchBookById(id);
+  }, [id]);
 
   if (isLoading) {
     return (
@@ -36,13 +38,13 @@ export default function SingleBookPage() {
       <div className="book-part">
         <img
           src={bookDetails.image}
-          alt={`Book's image for ${bookDetails.isbn13}`}
+          alt={`Book's image for ${bookDetails.id}`}
           className="book-poster"
         />
       </div>
       <div className="book-part">
         <h2 className="title">{bookDetails.title}</h2>
-        <p className="book-description">{bookDetails.desc}</p>
+        <p className="book-description">{bookDetails.description}</p>
       </div>
     </section>
   );
